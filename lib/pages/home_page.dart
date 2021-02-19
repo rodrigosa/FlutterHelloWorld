@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Center(
-        child: _img(),
+        child: _button(),
       ),
     );
   }
@@ -34,6 +34,17 @@ class HomePage extends StatelessWidget {
           decorationColor: Colors.red,
           decorationStyle: TextDecorationStyle.wavy),
     );
+  }
+
+  _button() {
+    return ElevatedButton(
+      child: Text("OK"),
+      onPressed: () => _onclickOK(),
+    );
+  }
+
+  void _onclickOK(){
+    print("Clicou no botão!");
   }
 
   _img() {
