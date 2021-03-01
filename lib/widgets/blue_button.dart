@@ -5,13 +5,16 @@ class BlueButton extends StatelessWidget {
 
   String text;
   Function onPressed;
+  Color color;
 
-  BlueButton(this.text, this.onPressed);
+  /// Os parametros dentro das chaves são opcionais
+  /// Se eu não informar a cor ela será azul por padrão (this.color = Colors.blue)
+  BlueButton(this.text, {@required this.onPressed, this.color = Colors.blue});
 
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-      color: Colors.blue,
+      color: color,
       child: Text(
         text,
         style: TextStyle(
