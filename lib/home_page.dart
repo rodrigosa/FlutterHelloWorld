@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hello1/pages/hello_listview.dart';
 import 'package:flutter_hello1/pages/hello_page1.dart';
 import 'package:flutter_hello1/pages/hello_page3.dart';
+import 'package:flutter_hello1/utils/nav.dart';
 import 'package:flutter_hello1/widgets/blue_button.dart';
 
 import 'pages/hello_page2.dart';
@@ -50,7 +52,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             BlueButton("ListView",
-                onPressed: () => _onClickNavigator(context, Hellopage1())),
+                onPressed: () => _onClickNavigator(context, HelloListView())),
             BlueButton("Page 2",
                 onPressed: () => _onClickNavigator(context, Hellopage2())),
             BlueButton("Page 3",
@@ -67,17 +69,6 @@ class HomePage extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  /// Navigator.push -> Navega entre telas
-  /// String s recebe parametro passado pelo componente que chama o _onClickNavigator
-  /// Sempre que usar await deve se ter o async declarado no metodo
-
-  push(BuildContext context, Widget page) {
-    return Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) {
-      return page;
-    }));
   }
 
   void _onClickNavigator(BuildContext context, Widget page) async {
