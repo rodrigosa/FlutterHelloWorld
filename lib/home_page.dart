@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hello1/pages/hello_page1.dart';
 import 'package:flutter_hello1/pages/hello_page3.dart';
+import 'package:flutter_hello1/widgets/blue_button.dart';
 
-import 'hello_page2.dart';
+import 'pages/hello_page2.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -48,12 +49,13 @@ class HomePage extends StatelessWidget {
   _buttons(BuildContext context) {
     return Column(
       children: [
+        ///Testando componente BlueButton criado
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _button(context, "ListView", () => _onClickNavigator(context, Hellopage1())),
-            _button(context, "Page 2", () => _onClickNavigator(context, Hellopage2())),
-            _button(context, "Page 3", () => _onClickNavigator(context, Hellopage3()))
+            BlueButton( "ListView", () => _onClickNavigator(context, Hellopage1())),
+            BlueButton( "Page 2", () => _onClickNavigator(context, Hellopage2())),
+            BlueButton( "Page 3", () => _onClickNavigator(context, Hellopage3()))
           ],
         ),
         Row(
