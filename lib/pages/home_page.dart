@@ -69,10 +69,15 @@ class HomePage extends StatelessWidget {
   }
 
   /// Navigator.push -> Navega entre telas
-  void _onClickNavigator(BuildContext context, Widget page) {
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+  /// String s recebe parametro passado pelo componente que chama o _onClickNavigator
+  /// Sempre que usar await deve se ter o async declarado no metodo
+  void _onClickNavigator(BuildContext context, Widget page) async {
+    String s = await Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
       return page;
     }));
+
+    /// Imrime o valor recebido em S
+    print(">> $s");
   }
 
   _onclickSnack() {
