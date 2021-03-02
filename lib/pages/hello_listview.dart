@@ -12,8 +12,7 @@ class HelloListView extends StatelessWidget {
   }
 
   _body() {
-
-    List <Image> imgs = [
+    List<Image> imgs = [
       _img("assets/images/dog1.png"),
       _img("assets/images/dog2.png"),
       _img("assets/images/dog3.png"),
@@ -21,9 +20,12 @@ class HelloListView extends StatelessWidget {
       _img("assets/images/dog5.png")
     ];
 
-    return ListView(
-      itemExtent: 350, ///Ajusta o tamanho dos items
-      children: imgs,
+    return ListView.builder(
+      itemCount: imgs.length,
+      itemExtent: 300,
+      itemBuilder: (context, index) {
+        return imgs[index];
+      },
     );
   }
 
@@ -33,5 +35,4 @@ class HelloListView extends StatelessWidget {
       fit: BoxFit.cover,
     );
   }
-
 }
