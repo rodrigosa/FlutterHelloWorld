@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Dog {
@@ -39,10 +40,19 @@ class HelloListView extends StatelessWidget {
           children: [
             _img(dog.foto), /// Nesta ordem a foto fica por baixo do nome
             Container( /// Ao inv[es de Container pode-se usar também o widget Align, porém o Container possui mais recursos
-              alignment: Alignment.center,
-              child: Text(
-                dog.nome,
-                style: TextStyle(fontSize: 26, color: Colors.white),
+              alignment: Alignment.topLeft,
+              child: Container(
+                margin: EdgeInsets.all(12),
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  /// O Black45 possui 45% de opacidade
+                  color: Colors.black45,
+                  borderRadius: BorderRadius.circular(16)
+                ),
+                child: Text(
+                  dog.nome,
+                  style: TextStyle(fontSize: 26, color: Colors.white),
+                ),
               ),
             ),
           ],
