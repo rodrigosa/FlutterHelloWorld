@@ -12,14 +12,18 @@ class HelloListView extends StatelessWidget {
   }
 
   _body() {
+
+    List <Image> imgs = [
+      _img("assets/images/dog1.png"),
+      _img("assets/images/dog2.png"),
+      _img("assets/images/dog3.png"),
+      _img("assets/images/dog4.png"),
+      _img("assets/images/dog5.png")
+    ];
+
     return ListView(
-      children: [
-        _img("assets/images/dog1.png"),
-        _img("assets/images/dog2.png"),
-        _img("assets/images/dog3.png"),
-        _img("assets/images/dog4.png"),
-        _img("assets/images/dog5.png")
-      ],
+      itemExtent: 350, ///Ajusta o tamanho dos items
+      children: imgs,
     );
   }
 
