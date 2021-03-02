@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Dog{
+class Dog {
   String nome;
   String foto;
 
@@ -32,7 +32,21 @@ class HelloListView extends StatelessWidget {
       itemExtent: 300,
       itemBuilder: (context, index) {
         Dog dog = dogs[index];
-        return _img(dog.foto);
+        return Stack(
+          fit: StackFit.expand,
+
+          /// Pode-se usar também o SizedBox.expand()
+          children: [
+            _img(dog.foto), /// Nesta ordem a foto fica por baixo do nome
+            Container( /// Ao inv[es de Container pode-se usar também o widget Align, porém o Container possui mais recursos
+              alignment: Alignment.center,
+              child: Text(
+                dog.nome,
+                style: TextStyle(fontSize: 26, color: Colors.white),
+              ),
+            ),
+          ],
+        );
       },
     );
   }
