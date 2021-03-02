@@ -14,6 +14,18 @@ class HelloListView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("ListView"),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () {
+                print("Lista");
+              }),
+          IconButton(
+              icon: Icon(Icons.grid_on),
+              onPressed: () {
+                print("Grid");
+              })
+        ],
       ),
       body: _body(),
     );
@@ -30,7 +42,8 @@ class HelloListView extends StatelessWidget {
 
     return GridView.builder(
       itemCount: dogs.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      gridDelegate:
+          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemBuilder: (context, index) {
         Dog dog = dogs[index];
         return Stack(
@@ -38,17 +51,20 @@ class HelloListView extends StatelessWidget {
 
           /// Pode-se usar também o SizedBox.expand()
           children: [
-            _img(dog.foto), /// Nesta ordem a foto fica por baixo do nome
-            Container( /// Ao inv[es de Container pode-se usar também o widget Align, porém o Container possui mais recursos
+            _img(dog.foto),
+
+            /// Nesta ordem a foto fica por baixo do nome
+            Container(
+              /// Ao inv[es de Container pode-se usar também o widget Align, porém o Container possui mais recursos
               alignment: Alignment.topLeft,
               child: Container(
                 margin: EdgeInsets.all(12),
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  /// O Black45 possui 45% de opacidade
-                  color: Colors.black45,
-                  borderRadius: BorderRadius.circular(16)
-                ),
+
+                    /// O Black45 possui 45% de opacidade
+                    color: Colors.black45,
+                    borderRadius: BorderRadius.circular(16)),
                 child: Text(
                   dog.nome,
                   style: TextStyle(fontSize: 26, color: Colors.white),
