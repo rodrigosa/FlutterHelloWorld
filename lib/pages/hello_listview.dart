@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hello1/pages/dog_page.dart';
+import 'package:flutter_hello1/utils/nav.dart';
 
 class Dog {
   String nome;
@@ -75,32 +77,37 @@ class _HelloListViewState extends State<HelloListView> {
 
   _itemView(List<Dog> dogs, int index) {
     Dog dog = dogs[index];
-    return Stack(
-      fit: StackFit.expand,
+    return GestureDetector(
+      onTap: (){
+        push(context, DogPage(dog));
+      },
+      child: Stack(
+        fit: StackFit.expand,
 
-      /// Pode-se usar também o SizedBox.expand()
-      children: [
-        _img(dog.foto),
+        /// Pode-se usar também o SizedBox.expand()
+        children: [
+          _img(dog.foto),
 
-        /// Nesta ordem a foto fica por baixo do nome
-        Container(
-          /// Ao inv[es de Container pode-se usar também o widget Align, porém o Container possui mais recursos
-          alignment: Alignment.topLeft,
-          child: Container(
-            margin: EdgeInsets.all(12),
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
+          /// Nesta ordem a foto fica por baixo do nome
+          Container(
+            /// Ao inv[es de Container pode-se usar também o widget Align, porém o Container possui mais recursos
+            alignment: Alignment.topLeft,
+            child: Container(
+              margin: EdgeInsets.all(12),
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
 
-                /// O Black45 possui 45% de opacidade
-                color: Colors.black45,
-                borderRadius: BorderRadius.circular(16)),
-            child: Text(
-              dog.nome,
-              style: TextStyle(fontSize: 26, color: Colors.white),
+                  /// O Black45 possui 45% de opacidade
+                  color: Colors.black45,
+                  borderRadius: BorderRadius.circular(16)),
+              child: Text(
+                dog.nome,
+                style: TextStyle(fontSize: 26, color: Colors.white),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
