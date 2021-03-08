@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hello1/pages/hello_listview.dart';
-import 'package:flutter_hello1/pages/hello_page1.dart';
 import 'package:flutter_hello1/pages/hello_page3.dart';
 import 'package:flutter_hello1/utils/nav.dart';
 import 'package:flutter_hello1/widgets/blue_button.dart';
@@ -23,7 +22,11 @@ class HomePage extends StatelessWidget {
       color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[_text(), _pageView(), _buttons(context)],
+        children: <Widget>[
+          _text(),
+          _pageView(),
+          _buttons(),
+        ],
       ),
     );
   }
@@ -44,30 +47,35 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _buttons(BuildContext context) {
-    return Column(
-      children: [
-        ///Testando componente BlueButton criado
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  _buttons() {
+    return Builder(
+      builder: (BuildContext context) {
+        return Column(
           children: [
-            BlueButton("ListView",
-                onPressed: () => _onClickNavigator(context, HelloListView())),
-            BlueButton("Page 2",
-                onPressed: () => _onClickNavigator(context, Hellopage2())),
-            BlueButton("Page 3",
-                onPressed: () => _onClickNavigator(context, Hellopage3()))
+            ///Testando componente BlueButton criado
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                BlueButton("ListView",
+                    onPressed: () =>
+                        _onClickNavigator(context, HelloListView())),
+                BlueButton("Page 2",
+                    onPressed: () => _onClickNavigator(context, Hellopage2())),
+                BlueButton("Page 3",
+                    onPressed: () => _onClickNavigator(context, Hellopage3()))
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _button(context, "Snack", () => _onclickSnack(context)),
+                _button(context, "Dialog", _onClickDialog),
+                _button(context, "Touch", _onClickToast)
+              ],
+            ),
           ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _button(context, "Snack", _onclickSnack),
-            _button(context, "Dialog", _onClickDialog),
-            _button(context, "Touch", _onClickToast)
-          ],
-        ),
-      ],
+        );
+      },
     );
   }
 
@@ -78,7 +86,18 @@ class HomePage extends StatelessWidget {
     print(">> $s");
   }
 
-  _onclickSnack() {}
+  _onclickSnack(BuildContext context) {
+    Scaffold.of(context).showSnackBar(SnackBar(
+      content: Text("Olá Flutter"),
+      action: SnackBarAction(
+        textColor: Colors.yellow,
+        label: 'OK',
+        onPressed: () {
+          print("OK!");
+        },
+      ),
+    ));
+  }
 
   _onClickDialog() {}
 
