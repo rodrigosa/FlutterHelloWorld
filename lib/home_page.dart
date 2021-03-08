@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _button(context, "Snack", () => _onclickSnack(context)),
-                _button(context, "Dialog", _onClickDialog),
+                _button(context, "Dialog", () => _onClickDialog(context)),
                 _button(context, "Touch", _onClickToast)
               ],
             ),
@@ -99,7 +99,34 @@ class HomePage extends StatelessWidget {
     ));
   }
 
-  _onClickDialog() {}
+  _onClickDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: false, // Para não fechar a caixa de dialogo clicando fora
+        builder: (context) {
+          return WillPopScope(
+            onWillPop: () async => false,
+            child: AlertDialog(
+              title: Text("Flutter é muito legal"),
+              actions: [
+                TextButton(
+                  child: Text("Cancelar"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                TextButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    Navigator.pop(context);// Sempre para fechar o Dialog chamar o POP
+                    print("OK!!!");
+                  },
+                )
+              ],
+            ),
+          );
+        });
+  }
 
   _onClickToast() {}
 
