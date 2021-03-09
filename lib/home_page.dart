@@ -3,6 +3,7 @@ import 'package:flutter_hello1/pages/hello_listview.dart';
 import 'package:flutter_hello1/pages/hello_page3.dart';
 import 'package:flutter_hello1/utils/nav.dart';
 import 'package:flutter_hello1/widgets/blue_button.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'pages/hello_page2.dart';
 
@@ -102,7 +103,8 @@ class HomePage extends StatelessWidget {
   _onClickDialog(BuildContext context) {
     showDialog(
         context: context,
-        barrierDismissible: false, // Para não fechar a caixa de dialogo clicando fora
+        barrierDismissible: false,
+        // Para não fechar a caixa de dialogo clicando fora
         builder: (context) {
           return WillPopScope(
             onWillPop: () async => false,
@@ -118,7 +120,8 @@ class HomePage extends StatelessWidget {
                 TextButton(
                   child: Text("OK"),
                   onPressed: () {
-                    Navigator.pop(context);// Sempre para fechar o Dialog chamar o POP
+                    Navigator.pop(
+                        context); // Sempre para fechar o Dialog chamar o POP
                     print("OK!!!");
                   },
                 )
@@ -128,7 +131,16 @@ class HomePage extends StatelessWidget {
         });
   }
 
-  _onClickToast() {}
+  _onClickToast() {
+    Fluttertoast.showToast(
+        msg: "Flutter é muito legal!!",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
 
   _button(BuildContext context, String text, Function onPressed) {
     return ElevatedButton(
