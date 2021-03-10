@@ -15,7 +15,31 @@ class HomePage extends StatelessWidget {
         title: Text("Hello Flutter"),
       ),
       body: _body(context),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () {
+              _onClickFab();
+            },
+          ),
+          SizedBox(
+          width: 8,
+          ),
+          FloatingActionButton(
+            child: Icon(Icons.favorite_border),
+            onPressed: () {
+              _onClickFab();
+            },
+          ),
+        ],
+      ),
     );
+  }
+
+  _onClickFab() {
+    print("Adicionar");
   }
 
   _body(BuildContext context) {
