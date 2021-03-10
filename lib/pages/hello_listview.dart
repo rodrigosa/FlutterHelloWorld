@@ -48,11 +48,11 @@ class _HelloListViewState extends State<HelloListView> {
 
   _body() {
     List<Dog> dogs = [
-      Dog("Jack Russel", "assets/images/dog1.png"),
-      Dog("Labrador", "assets/images/dog2.png"),
-      Dog("Pug", "assets/images/dog3.png"),
-      Dog("Rottweiler", "assets/images/dog4.png"),
-      Dog("Pastor", "assets/images/dog5.png")
+      Dog("Marcela", "assets/images/dog1.png"),
+      Dog("Bianca", "assets/images/dog2.png"),
+      Dog("Júlia", "assets/images/dog3.png"),
+      Dog("Paula", "assets/images/dog4.png"),
+      Dog("Suzy", "assets/images/dog5.png")
     ];
 
     if (_gridView) {

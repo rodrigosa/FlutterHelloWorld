@@ -11,18 +11,36 @@ import 'pages/hello_page2.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Hello Flutter"),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Hello Flutter"),
+          bottom: TabBar(tabs: [
+            Tab(text: "TAB 1",),
+            Tab(text: "TAB 2",),
+            Tab(text: "TAB 3",),
+          ]),
+        ),
+        body:TabBarView(
+          children: [
+            _body(context),
+            Container(
+              color: Colors.green,
+            ),
+            Container(
+              color: Colors.yellow,
+            )
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            _onClickFab();
+          },
+        ),
+        drawer: DrawerList(),
       ),
-      body: _body(context),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          _onClickFab();
-        },
-      ),
-      drawer: DrawerList(),
     );
   }
 
@@ -175,7 +193,7 @@ class HomePage extends StatelessWidget {
 
   _text() {
     return Text(
-      "Hello World",
+      "Filhas de Rodrigo & Paula",
       style: TextStyle(
           color: Colors.blue,
           fontSize: 30,
