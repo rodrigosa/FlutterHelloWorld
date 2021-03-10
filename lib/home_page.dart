@@ -3,6 +3,7 @@ import 'package:flutter_hello1/pages/hello_listview.dart';
 import 'package:flutter_hello1/pages/hello_page3.dart';
 import 'package:flutter_hello1/utils/nav.dart';
 import 'package:flutter_hello1/widgets/blue_button.dart';
+import 'package:flutter_hello1/widgets/drawer_list.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'pages/hello_page2.dart';
@@ -21,8 +22,7 @@ class HomePage extends StatelessWidget {
           _onClickFab();
         },
       ),
-      drawer: Drawer(
-      ),
+      drawer: DrawerList(),
     );
   }
 
